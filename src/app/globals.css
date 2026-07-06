@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold-300: #FADAC9;
+  --color-gold-400: #E09C76;
+  --color-gold-500: #C27D56;
+  --color-gold-600: #A8653F;
+  --color-gold-700: #8C5130;
+  
+  --color-gold-200: #FDE8D8;
+  
+  /* Samadhi & Madhawa Colors */
+  --color-brand-ivory: #faf6f1;
+  --color-brand-champagne: #f5ebe0;
+  --color-brand-beige: #d4b896;
+  --color-brand-gold: #c9a96e;
+  
+  --font-inter: var(--font-inter), var(--font-sinhala), var(--font-tamil), sans-serif;
+  --font-playfair: var(--font-playfair), var(--font-sinhala), var(--font-tamil), serif;
+  --font-script: var(--font-script), var(--font-sinhala), var(--font-tamil), cursive;
+  
+  /* Map standard theme variables so Tailwind generates bg-background, text-foreground, etc. */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  
+  /* Aliases for old class names used in components */
+  --color-dark-bg: var(--color-brand-ivory);
+  --color-dark-surface: var(--color-brand-champagne);
+  --color-light-bg: #44403c;
+  --color-light-surface: #57534e;
+}
+
+:root {
+  --background: var(--color-brand-ivory);
+  --foreground: #44403c; /* Dark stone color for readable text */
+  --primary: var(--color-brand-gold);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  background-attachment: fixed;
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(201, 169, 110, 0.2); /* Brand gold */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(201, 169, 110, 0.4);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), 0 0 40px rgba(201, 169, 110, 0.1), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #b08968 0%, #c9a96e 50%, #d4b896 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding-bottom: 0.2em;
+  padding-top: 0.2em;
+  line-height: 1.3;
+}
+
+.bg-gradient-gold {
+  background: linear-gradient(135deg, #d4b896 0%, #c9a96e 50%, #b08968 100%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b08968;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(201, 169, 110, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(201, 169, 110, 0.5); }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}

@@ -1,0 +1,214 @@
+{
+  "hero": {
+    "en": {
+      "brideName": "Vishmi",
+      "groomName": "Pruthuvi",
+      "weddingDate": "2026 June 02",
+      "countdownTarget": "2026-07-04T15:01",
+      "bgUrl": "/uploads/preshoot-1783079055825-66229134.jpg"
+    },
+    "si": {
+      "brideName": "",
+      "groomName": "",
+      "weddingDate": "",
+      "countdownTarget": "2026-07-04T15:01",
+      "bgUrl": "/uploads/preshoot-1783079055825-66229134.jpg"
+    },
+    "ta": {
+      "brideName": "",
+      "groomName": "",
+      "weddingDate": "",
+      "countdownTarget": "2026-07-04T15:01",
+      "bgUrl": "/uploads/preshoot-1783079055825-66229134.jpg"
+    }
+  },
+  "ourStory": {
+    "en": {
+      "events": [
+        {
+          "id": "event-1",
+          "title": "How We Met",
+          "year": "2023",
+          "description": "We met and it was magic."
+        },
+        {
+          "id": "event-2",
+          "title": "The Engagement",
+          "year": "2024",
+          "description": "He proposed and she said yes!"
+        },
+        {
+          "id": "event-3",
+          "title": "The Wedding",
+          "year": "2026",
+          "description": "We are finally getting married."
+        }
+      ]
+    },
+    "si": {
+      "events": [
+        {
+          "id": "event-1",
+          "title": "How We Met",
+          "year": "2023",
+          "description": "We met and it was magic."
+        },
+        {
+          "id": "event-2",
+          "title": "The Engagement",
+          "year": "2024",
+          "description": "He proposed and she said yes!"
+        },
+        {
+          "id": "event-3",
+          "title": "The Wedding",
+          "year": "2026",
+          "description": "We are finally getting married."
+        }
+      ]
+    },
+    "ta": {
+      "events": [
+        {
+          "id": "event-1",
+          "title": "How We Met",
+          "year": "2023",
+          "description": "We met and it was magic."
+        },
+        {
+          "id": "event-2",
+          "title": "The Engagement",
+          "year": "2024",
+          "description": "He proposed and she said yes!"
+        },
+        {
+          "id": "event-3",
+          "title": "The Wedding",
+          "year": "2026",
+          "description": "We are finally getting married."
+        }
+      ]
+    }
+  },
+  "preShoot": {
+    "en": {
+      "title": "Pre-Shoot Memories",
+      "description": "A glimpse into our beautiful journey before the big day.",
+      "videoUrl": "/uploads/preshoot-1783070753684-166577798.mp4"
+    },
+    "si": {
+      "title": "Pre-Shoot Memories",
+      "description": "A glimpse into our beautiful journey before the big day.",
+      "videoUrl": "/uploads/preshoot-1783070753684-166577798.mp4"
+    },
+    "ta": {
+      "title": "Pre-Shoot Memories",
+      "description": "A glimpse into our beautiful journey before the big day.",
+      "videoUrl": "/uploads/preshoot-1783070753684-166577798.mp4"
+    }
+  },
+  "weddingEvents": {
+    "en": [
+      {
+        "id": "event-1",
+        "title": "The Wedding Ceremony",
+        "date": "December 31, 2026",
+        "time": "10:00 AM",
+        "location": "Galle Face Hotel, Colombo",
+        "description": "Join us as we tie the knot in a beautiful traditional ceremony surrounded by our loved ones.",
+        "mapUrl": "https://maps.app.goo.gl/qD6ZJpT5XqjG6qQ86"
+      },
+      {
+        "id": "event-2",
+        "title": "The Reception",
+        "date": "December 31, 2026",
+        "time": "07:30 PM",
+        "location": "Shangri-La, Colombo",
+        "description": "Celebrate our new chapter with dinner, drinks, and plenty of dancing!",
+        "mapUrl": "https://maps.app.goo.gl/qD6ZJpT5XqjG6qQ86",
+        "timeline": [
+          {
+            "time": "07.30",
+            "label": "cake"
+          }
+        ]
+      }
+    ],
+    "si": [
+      {
+        "id": "event-1",
+        "title": "The Wedding Ceremony",
+        "date": "December 31, 2026",
+        "time": "10:00 AM",
+        "location": "Galle Face Hotel, Colombo",
+        "description": "Join us as we tie the knot in a beautiful traditional ceremony surrounded by our loved ones.",
+        "mapUrl": "https://maps.app.goo.gl/qD6ZJpT5XqjG6qQ86"
+      },
+      {
+        "id": "event-2",
+        "title": "The Reception",
+        "date": "December 31, 2026",
+        "time": "07:30 PM",
+        "location": "Shangri-La, Colombo",
+        "description": "Celebrate our new chapter with dinner, drinks, and plenty of dancing!",
+        "mapUrl": "https://maps.app.goo.gl/qD6ZJpT5XqjG6qQ86"
+      }
+    ],
+    "ta": [
+      {
+        "id": "event-1",
+        "title": "The Wedding Ceremony",
+        "date": "December 31, 2026",
+        "time": "10:00 AM",
+        "location": "Galle Face Hotel, Colombo",
+        "description": "Join us as we tie the knot in a beautiful traditional ceremony surrounded by our loved ones.",
+        "mapUrl": "https://maps.app.goo.gl/qD6ZJpT5XqjG6qQ86"
+      },
+      {
+        "id": "event-2",
+        "title": "The Reception",
+        "date": "December 31, 2026",
+        "time": "07:30 PM",
+        "location": "Shangri-La, Colombo",
+        "description": "Celebrate our new chapter with dinner, drinks, and plenty of dancing!",
+        "mapUrl": "https://maps.app.goo.gl/qD6ZJpT5XqjG6qQ86"
+      }
+    ]
+  },
+  "gallery": [
+    {
+      "id": "1783072974837",
+      "src": "/uploads/preshoot-1783072974776-958743299.jpg",
+      "alt": "Gallery Photo",
+      "height": "h-80",
+      "visible": true
+    },
+    {
+      "id": "1783072983674",
+      "src": "/uploads/preshoot-1783072983662-156829462.jpg",
+      "alt": "Gallery Photo",
+      "height": "h-80",
+      "visible": true
+    },
+    {
+      "id": "1783072990458",
+      "src": "/uploads/preshoot-1783072990438-17387029.jpg",
+      "alt": "Gallery Photo",
+      "height": "h-80",
+      "visible": true
+    }
+  ],
+  "weddingCard": {
+    "imageUrl": "/uploads/preshoot-1783070748128-345949361.jpg"
+  },
+  "visibility": {
+    "hero": true,
+    "countdown": true,
+    "weddingCard": true,
+    "ourStory": true,
+    "preShootVideo": true,
+    "events": true,
+    "gallery": true,
+    "rsvpForm": true
+  }
+}

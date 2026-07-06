@@ -1,0 +1,42 @@
+{
+  "nav": {
+    "ourStory": "Our Story",
+    "events": "Events",
+    "gallery": "Gallery",
+    "rsvp": "RSVP"
+  },
+  "countdown": {
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds"
+  },
+  "rsvp": {
+    "title": "RSVP",
+    "subtitle": "Will you be joining us?",
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "guests": "Number of Guests",
+    "attending": {
+      "label": "Will you be attending?",
+      "yes": "Yes, I will be there",
+      "no": "No, I can't make it"
+    },
+    "foodPreference": "Food Preference",
+    "vegetarian": "Vegetarian",
+    "nonVegetarian": "Non-Vegetarian",
+    "vegan": "Vegan",
+    "specialNotes": "Special Requirements / Notes (Optional)",
+    "submit": "Send RSVP",
+    "submitting": "Sending...",
+    "success": "RSVP Sent Successfully! Thank you.",
+    "error": "Failed to send RSVP. Please try again."
+  },
+  "video": {
+    "skip": "Skip Video"
+  },
+  "footer": {
+    "madeWithLove": "Made with love for"
+  }
+}
