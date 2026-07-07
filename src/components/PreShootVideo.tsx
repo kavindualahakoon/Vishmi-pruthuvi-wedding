@@ -41,16 +41,6 @@ export default function PreShootVideo() {
             {preShootContent.description || 'A glimpse into our love story, captured in motion. Experience the moments that led us to this day.'}
           </p>
           
-          {/* Skip Button */}
-          <div className="flex justify-center mb-8">
-            <button 
-              onClick={() => document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-3 border border-primary/40 text-primary bg-transparent hover:bg-primary/10 transition-all duration-300 uppercase tracking-[0.3em] text-xs flex items-center gap-3 rounded-full font-bold hover:scale-105"
-            >
-              Skip Video
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m13 17 5-5-5-5"/><path d="m6 17 5-5-5-5"/></svg>
-            </button>
-          </div>
         </motion.div>
 
         {/* Bottom: Cinematic Video Player (Portrait Frame) */}
@@ -87,6 +77,17 @@ export default function PreShootVideo() {
                 </div>
               )}
             </div>
+          </div>
+          
+          {/* Skip Button (Now under the video) */}
+          <div className="flex justify-center mt-10">
+            <button 
+              onClick={() => document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 py-3 border border-primary/40 text-primary bg-transparent hover:bg-primary/10 transition-all duration-300 uppercase tracking-[0.3em] text-xs flex items-center gap-3 rounded-full font-bold hover:scale-105"
+            >
+              Skip Video
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m13 17 5-5-5-5"/><path d="m6 17 5-5-5-5"/></svg>
+            </button>
           </div>
         </motion.div>
       </div>
