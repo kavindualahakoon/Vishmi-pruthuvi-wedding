@@ -14,13 +14,15 @@ export default function PreShootVideo() {
   };
 
   const videoRef = React.useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = React.useState(true);
 
   React.useEffect(() => {
     if (videoRef.current) {
       // Explicitly play the video to ensure autoplay works even if dynamically mounted
       videoRef.current.play().catch(e => console.warn("Autoplay blocked by browser:", e));
+      videoRef.current.muted = isMuted;
     }
-  }, [preShootContent.videoUrl]);
+  }, [preShootContent.videoUrl, isMuted]);
 
   return (
     <section className="py-20 md:py-32 text-foreground relative h-full flex flex-col justify-center bg-brand-dark overflow-hidden" id="preshoot">
@@ -63,11 +65,10 @@ export default function PreShootVideo() {
                   src={preShootContent.videoUrl}
                   autoPlay
                   loop
-                  muted
-                  controls
+                  muted={isMuted}
                   playsInline
                   poster="/images/hero-bg.png"
-                  className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700"
+                  className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                 />
               ) : (
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-primary/40 gap-4 bg-[url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center">
@@ -75,6 +76,20 @@ export default function PreShootVideo() {
                   <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="relative z-10"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
                   <span className="text-sm tracking-[0.4em] uppercase font-semibold relative z-10">Video coming soon</span>
                 </div>
+              )}
+
+              {/* Custom Audio Toggle Button */}
+              {preShootContent.videoUrl && (
+                <button 
+                  onClick={() => setIsMuted(!isMuted)}
+                  className="absolute bottom-4 right-4 z-20 w-12 h-12 bg-black/60 hover:bg-primary/80 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all shadow-lg border border-white/20"
+                >
+                  {isMuted ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+                  )}
+                </button>
               )}
             </div>
           </div>
