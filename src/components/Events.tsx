@@ -9,87 +9,95 @@ import { useLanguage } from "@/context/LanguageContext";
 export default function Events() {
   const { content } = useContent();
   const { lang } = useLanguage();
-  const events = content?.weddingEvents?.[lang] || [];
+  const eventsData = content?.weddingEvents?.[lang]?.events || content?.weddingEvents?.[lang] || content?.weddingEvents || [];
+  const eventsToDisplay = Array.isArray(eventsData) ? eventsData : [];
 
   return (
-    <section className="py-16 md:py-24 bg-dark-bg text-foreground relative" id="events">
+    <section className="py-20 md:py-32 bg-brand-surface text-foreground relative overflow-hidden" id="events">
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-playfair text-gradient-gold mb-4">Wedding Events</h2>
-          <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-gray-700 font-medium max-w-2xl mx-auto">
+          <h2 className="text-sm uppercase tracking-[0.4em] text-primary mb-4 font-semibold">Join Us</h2>
+          <h2 className="text-4xl md:text-6xl font-playfair text-gradient-gold mb-6 drop-shadow-md">Wedding Events</h2>
+          <div className="w-12 h-px bg-primary mx-auto mb-8 opacity-50"></div>
+          <p className="text-gray-400 font-light tracking-wide max-w-2xl mx-auto">
             We are so excited to celebrate with you. Here are the details of our special events.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-          {events.map((event: any, index: any) => (
+        <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
+          {eventsToDisplay.map((event: any, index: number) => (
             <motion.div
               key={event.id}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="glass-panel rounded-2xl border border-primary/20 overflow-hidden flex flex-col hover:border-primary/50 transition-colors duration-300"
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              className="glass-panel rounded-3xl border border-primary/20 overflow-hidden flex flex-col hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 group shadow-xl hover:shadow-[0_20px_50px_rgba(212,175,55,0.15)] bg-brand-dark/50"
             >
               {/* Event Header */}
-              <div className="bg-primary/5 p-8 border-b border-primary/10 text-center relative overflow-hidden group">
-                <div className="absolute inset-0 bg-primary/10 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out"></div>
+              <div className="bg-brand-dark p-8 border-b border-primary/20 text-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 <h3 className="text-3xl font-playfair text-primary relative z-10">{event.title}</h3>
               </div>
               
               {/* Event Details */}
-              <div className="p-8 flex-grow flex flex-col">
-                <div className="space-y-6 flex-grow">
-                  <div className="flex items-start gap-4">
-                    <Calendar className="w-6 h-6 text-primary shrink-0 mt-1" />
+              <div className="p-8 md:p-10 flex-grow flex flex-col relative z-10">
+                <div className="space-y-8 flex-grow">
+                  <div className="flex items-start gap-5">
+                    <div className="p-3 rounded-full bg-primary/10 border border-primary/20 text-primary">
+                      <Calendar className="w-5 h-5" />
+                    </div>
                     <div>
-                      <h4 className="text-sm uppercase tracking-widest text-gray-600 mb-1">Date</h4>
-                      <p className="text-lg text-gray-800 font-medium">{event.date}</p>
+                      <h4 className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-2">Date</h4>
+                      <p className="text-lg text-gray-200 font-playfair">{event.date}</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start gap-4">
-                    <Clock className="w-6 h-6 text-primary shrink-0 mt-1" />
+                  <div className="flex items-start gap-5">
+                    <div className="p-3 rounded-full bg-primary/10 border border-primary/20 text-primary">
+                      <Clock className="w-5 h-5" />
+                    </div>
                     <div>
-                      <h4 className="text-sm uppercase tracking-widest text-gray-600 mb-1">Time</h4>
-                      <p className="text-lg text-gray-800 font-medium">{event.time}</p>
+                      <h4 className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-2">Time</h4>
+                      <p className="text-lg text-gray-200 font-playfair">{event.time}</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start gap-4">
-                    <MapPin className="w-6 h-6 text-primary shrink-0 mt-1" />
+                  <div className="flex items-start gap-5">
+                    <div className="p-3 rounded-full bg-primary/10 border border-primary/20 text-primary">
+                      <MapPin className="w-5 h-5" />
+                    </div>
                     <div>
-                      <h4 className="text-sm uppercase tracking-widest text-gray-600 mb-1">Location</h4>
-                      <p className="text-lg text-gray-800 font-medium">{event.location}</p>
+                      <h4 className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-2">Location</h4>
+                      <p className="text-lg text-gray-200 font-playfair">{event.location}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Event Timeline */}
                 {event.timeline && event.timeline.length > 0 && (
-                  <div className="mt-8 pt-8 border-t border-primary/10">
-                    <h4 className="text-center font-playfair text-xl text-primary mb-6">Event Timeline</h4>
-                    <div className="relative border-l border-[#9b7e4b]/30 ml-3 md:ml-4 space-y-6">
+                  <div className="mt-10 pt-8 border-t border-primary/10">
+                    <h4 className="text-center font-playfair text-2xl text-gradient-gold mb-8">Timeline</h4>
+                    <div className="relative border-l border-primary/30 ml-4 space-y-8">
                       {event.timeline.map((item: any, i: number) => (
-                        <div key={i} className="relative pl-6">
-                          <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-[#9b7e4b]"></div>
-                          <p className="text-sm font-semibold text-[#9b7e4b]">{item.time}</p>
-                          <p className="text-[#292524]">{item.label}</p>
+                        <div key={i} className="relative pl-8 group/item">
+                          <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-brand-surface border border-primary group-hover/item:bg-primary transition-colors"></div>
+                          <p className="text-xs font-bold tracking-[0.2em] text-primary mb-1">{item.time}</p>
+                          <p className="text-gray-300 font-light">{item.label}</p>
                         </div>
                       ))}
                     </div>
                   </div>
                 )}
 
-                <div className="mt-8 pt-8 border-t border-primary/10">
-                  <p className="text-gray-700 font-medium italic mb-8">
+                <div className="mt-10 pt-8 border-t border-primary/10">
+                  <p className="text-gray-400 font-light italic mb-10 leading-relaxed text-center">
                     &quot;{event.description}&quot;
                   </p>
                   
@@ -97,7 +105,7 @@ export default function Events() {
                     href={event.mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-auto block w-full text-center py-3 border border-primary text-primary hover:bg-dark-surface hover:text-primary hover:border-primary transition-all duration-300 uppercase tracking-widest text-xs font-semibold rounded-full"
+                    className="block w-full text-center py-4 border border-primary/40 text-primary hover:bg-primary/10 transition-all duration-300 uppercase tracking-[0.3em] text-xs font-bold rounded-full"
                   >
                     View on Map
                   </a>
@@ -107,6 +115,9 @@ export default function Events() {
           ))}
         </div>
       </div>
+      
+      {/* Decorative Radial Overlay */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] pointer-events-none z-0 opacity-20 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent" />
     </section>
   );
 }

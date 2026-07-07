@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 import path from "path";
 
-const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'https://vishmi-pruthuvi.onrender.com';
+const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'https://vishmi-pruthuvi-wedding.onrender.com';
 
 const nextConfig: NextConfig = {
   turbopack: {

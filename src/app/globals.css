@@ -9,11 +9,13 @@
   
   --color-gold-200: #FDE8D8;
   
-  /* Samadhi & Madhawa Colors */
-  --color-brand-ivory: #faf6f1;
-  --color-brand-champagne: #f5ebe0;
+  /* Next Level Dark Luxury Colors */
+  --color-brand-dark: #07090F; /* Deep Midnight Blue / Black */
+  --color-brand-surface: #0E131F;
+  --color-brand-surface-light: #161D2E;
   --color-brand-beige: #d4b896;
-  --color-brand-gold: #c9a96e;
+  --color-brand-gold: #D4AF37; /* Luminous Metallic Gold */
+  --color-brand-gold-light: #F3E5AB;
   
   --font-inter: var(--font-inter), var(--font-sinhala), var(--font-tamil), sans-serif;
   --font-playfair: var(--font-playfair), var(--font-sinhala), var(--font-tamil), serif;
@@ -25,16 +27,20 @@
   --color-primary: var(--primary);
   
   /* Aliases for old class names used in components */
-  --color-dark-bg: var(--color-brand-ivory);
-  --color-dark-surface: var(--color-brand-champagne);
-  --color-light-bg: #44403c;
-  --color-light-surface: #57534e;
+  --color-dark-bg: var(--color-brand-dark);
+  --color-dark-surface: var(--color-brand-surface);
+  --color-light-bg: #EAEAEA;
+  --color-light-surface: #F5F5F5;
 }
 
 :root {
-  --background: var(--color-brand-ivory);
-  --foreground: #44403c; /* Dark stone color for readable text */
+  --background: var(--color-brand-dark);
+  --foreground: #E0E0E0; /* Light text for readability */
   --primary: var(--color-brand-gold);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -43,22 +49,23 @@ body {
   background-attachment: fixed;
   font-family: var(--font-inter), sans-serif;
   overflow-x: hidden;
-  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .glass-panel {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(14, 19, 31, 0.4); /* Dark surface with transparency */
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(201, 169, 110, 0.2); /* Brand gold */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 1);
+  border: 1px solid rgba(212, 175, 55, 0.15); /* Brand gold border */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-panel:hover {
-  background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(201, 169, 110, 0.4);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), 0 0 40px rgba(201, 169, 110, 0.1), inset 0 1px 0 rgba(255, 255, 255, 1);
+  background: rgba(14, 19, 31, 0.6);
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(212, 175, 55, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .text-gradient-gold {

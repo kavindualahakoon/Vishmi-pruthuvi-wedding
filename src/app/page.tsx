@@ -36,17 +36,8 @@ export default function Home() {
         {content?.visibility?.hero !== false && <Hero />}
         {content?.visibility?.countdown !== false && <Countdown />}
         {content?.visibility?.weddingCard !== false && <WeddingCard />}
-        {/* Combined Side-by-Side Container for PC */}
-        <section className="w-full max-w-[100vw] flex flex-col xl:flex-row bg-dark-surface relative z-10">
-          {/* Left Side: Pre-Shoot Video */}
-          <div className="w-full xl:w-1/2 flex items-stretch">
-            {content?.visibility?.preShootVideo !== false && <PreShootVideo />}
-          </div>
-          {/* Right Side: Our Story */}
-          <div className="w-full xl:w-1/2 flex items-stretch bg-dark-bg/50">
-            {content?.visibility?.ourStory !== false && <OurStory />}
-          </div>
-        </section>
+        {content?.visibility?.preShootVideo !== false && <PreShootVideo />}
+        {content?.visibility?.ourStory !== false && <OurStory />}
         {content?.visibility?.events !== false && <Events />}
         {content?.visibility?.gallery !== false && <Gallery />}
         {content?.visibility?.rsvpForm !== false && <RSVPForm />}

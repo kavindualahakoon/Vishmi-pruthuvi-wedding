@@ -5,7 +5,7 @@
   "scripts": {
     "dev:next": "next dev",
     "dev:server": "cd server && npm run dev",
-    "dev": "npx concurrently \"npm run dev:next\" \"npm run dev:server\"",
+    "dev": "node dev.js",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

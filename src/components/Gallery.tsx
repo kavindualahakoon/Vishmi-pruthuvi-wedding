@@ -20,18 +20,19 @@ export default function Gallery() {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-dark-surface text-foreground relative" id="gallery">
+    <section className="pt-20 pb-10 md:pt-32 md:pb-16 bg-brand-dark text-foreground relative overflow-hidden" id="gallery">
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16 w-full px-4 sm:px-6"
         >
-          <h2 className="text-4xl md:text-5xl font-playfair text-gradient-gold mb-4">Capturing Moments</h2>
-          <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-gray-700 font-medium max-w-lg mx-auto">
+          <h2 className="text-xs sm:text-sm uppercase tracking-[0.3em] md:tracking-[0.4em] text-primary mb-4 font-semibold break-words">Memories</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-playfair text-gradient-gold mb-6 drop-shadow-md break-words">Capturing Moments</h2>
+          <div className="w-12 h-px bg-primary mx-auto mb-6 md:mb-8 opacity-50"></div>
+          <p className="text-gray-400 font-light tracking-wide max-w-[280px] sm:max-w-md md:max-w-lg mx-auto text-sm md:text-base leading-relaxed break-words">
             A collection of beautiful memories leading up to our special day.
           </p>
         </motion.div>
