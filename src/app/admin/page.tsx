@@ -22,7 +22,7 @@ export default function AdminDashboard() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [activeTab, setActiveTab] = useState<"guests" | "content">("guests");
-  const [editingLang, setEditingLang] = useState<"en" | "si" | "ta">("en");
+  const editingLang = "en";
   
   // Guest state
   const [guests, setGuests] = useState<Guest[]>([]);
@@ -41,11 +41,13 @@ export default function AdminDashboard() {
   const [uploadingHeroImage, setUploadingHeroImage] = useState(false);
   const [uploadingCardImage, setUploadingCardImage] = useState(false);
   const [uploadingAudio, setUploadingAudio] = useState(false);
+  const [uploadingFavicon, setUploadingFavicon] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const imageInputRef = useRef<HTMLInputElement>(null);
   const heroImageInputRef = useRef<HTMLInputElement>(null);
   const cardImageInputRef = useRef<HTMLInputElement>(null);
   const audioInputRef = useRef<HTMLInputElement>(null);
+  const faviconInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const defaultHero = { brideName: "", groomName: "", weddingDate: "", countdownTarget: "", bgUrl: "" };
@@ -380,6 +382,40 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleFaviconUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('image', file);
+
+    setUploadingFavicon(true);
+    try {
+      const res = await axios.post('/api/content/upload-image', formData);
+      
+      const newEditingContent = {
+        ...editingContent,
+        faviconUrl: res.data.imageUrl
+      };
+      
+      setEditingContent(newEditingContent);
+      setContent(newEditingContent);
+      
+      try {
+        await axios.put('/api/content', newEditingContent);
+      } catch (err) {
+        console.error("Auto-save failed", err);
+      }
+      
+      alert("Favicon uploaded successfully!");
+    } catch (err) {
+      console.error("Upload failed", err);
+      alert("Failed to upload favicon");
+    } finally {
+      setUploadingFavicon(false);
+    }
+  };
+
   const exportToCSV = () => {
     if (guests.length === 0) return;
     const headers = ["Name", "Email", "Phone", "Guest Count", "Food Preference", "Special Notes", "Date Submitted"];
@@ -525,10 +561,8 @@ export default function AdminDashboard() {
     return (
       <div className="space-y-8 animate-in fade-in duration-500">
         <div className="flex flex-col md:flex-row justify-between items-end gap-4">
-          <div className="flex gap-2 bg-dark-surface p-1 rounded-lg border border-primary/20">
-            {[ {c:"en", l:"English"}, {c:"si", l:"Sinhala"}, {c:"ta", l:"Tamil"} ].map(lang => (
-              <button key={lang.c} onClick={() => setEditingLang(lang.c as any)} className={`px-4 py-2 rounded-md text-sm transition-colors ${editingLang === lang.c ? "bg-primary text-dark-bg font-bold" : "text-gray-400 hover:text-white"}`}>{lang.l}</button>
-            ))}
+          <div className="flex gap-2 bg-dark-surface p-1 rounded-lg border border-primary/20 invisible">
+            {/* Language tabs removed */}
           </div>
           <div>
             <h1 className="text-4xl font-playfair text-gradient-gold mb-2">Website Content</h1>
@@ -540,6 +574,32 @@ export default function AdminDashboard() {
         </div>
 
 
+
+        {/* Global Settings */}
+        <div className="glass-panel p-6 rounded-xl border border-primary/20 shadow-xl space-y-4">
+          <div className="flex items-center justify-between border-b border-primary/20 pb-4">
+            <h2 className="text-xl font-playfair text-primary flex items-center gap-2"><ZoomIn className="w-5 h-5"/> Global Settings</h2>
+          </div>
+          <div className="pt-2">
+            <label className="block text-xs uppercase text-gray-400 mb-1">Website Favicon</label>
+            <input type="file" accept="image/x-icon,image/png,image/jpeg" ref={faviconInputRef} className="hidden" onChange={handleFaviconUpload} />
+            <div className="flex flex-col md:flex-row gap-6 items-start mt-2">
+              <button onClick={() => faviconInputRef.current?.click()} disabled={uploadingFavicon} className="px-6 py-3 border border-primary border-dashed text-primary bg-primary/5 hover:bg-primary/10 transition-colors rounded-lg w-full md:w-auto flex items-center justify-center gap-2 h-fit">
+                <ZoomIn className="w-4 h-4" /> {uploadingFavicon ? "Uploading..." : "Upload New Favicon"}
+              </button>
+              {editingContent.faviconUrl && (
+                <div className="relative w-16 h-16 rounded-lg overflow-hidden border border-primary/30 bg-dark-surface flex-shrink-0 flex items-center justify-center p-2">
+                  <img
+                    src={editingContent.faviconUrl}
+                    alt="Favicon Preview"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              )}
+            </div>
+            <p className="text-xs text-gray-500 mt-2">Upload a small square image (e.g. 32x32) to use as the site's tab icon.</p>
+          </div>
+        </div>
 
         {/* Hero Section */}
         <div className="glass-panel p-6 rounded-xl border border-primary/20 shadow-xl space-y-4">

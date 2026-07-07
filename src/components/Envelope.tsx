@@ -11,8 +11,8 @@ export default function Envelope({ onComplete }: { onComplete: () => void }) {
   const [isFadingOut, setIsFadingOut] = useState(false);
   const { content } = useContent();
 
-  const brideName = content?.hero?.en?.brideName || content?.hero?.brideName || "Amaya";
-  const groomName = content?.hero?.en?.groomName || content?.hero?.groomName || "Kasun";
+  const brideName = content?.hero?.en?.brideName || content?.hero?.brideName || "Vishmi";
+  const groomName = content?.hero?.en?.groomName || content?.hero?.groomName || "Pruthuvi";
   const monogram = `${brideName.charAt(0)} & ${groomName.charAt(0)}`;
 
   useEffect(() => {

@@ -1,13 +1,11 @@
 "use client";
 
 import { useContent } from "@/context/ContentContext";
-import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
   const { content } = useContent();
-  const { lang } = useLanguage();
   
-  const heroContent = content?.hero?.[lang] || content?.hero?.en || content?.hero || { 
+  const heroContent = content?.hero?.en || content?.hero || { 
     brideName: "Bride", 
     groomName: "Groom"
   };

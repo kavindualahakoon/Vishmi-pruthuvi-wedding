@@ -4,12 +4,10 @@
 import { motion } from "framer-motion";
 import { MapPin, Calendar, Clock } from "lucide-react";
 import { useContent } from "@/context/ContentContext";
-import { useLanguage } from "@/context/LanguageContext";
 
 export default function Events() {
   const { content } = useContent();
-  const { lang } = useLanguage();
-  const eventsData = content?.weddingEvents?.[lang]?.events || content?.weddingEvents?.[lang] || content?.weddingEvents || [];
+  const eventsData = content?.weddingEvents?.en?.events || content?.weddingEvents?.en || content?.weddingEvents || [];
   const eventsToDisplay = Array.isArray(eventsData) ? eventsData : [];
 
   return (

@@ -4,12 +4,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useContent } from "@/context/ContentContext";
-import { useLanguage } from "@/context/LanguageContext";
 
 export default function PreShootVideo() {
   const { content } = useContent();
-  const { lang, t } = useLanguage();
-  const preShootContent = content?.preShoot?.[lang] || content?.preShoot?.en || content?.preShoot || {
+  const preShootContent = content?.preShoot?.en || content?.preShoot || {
     title: "",
     description: "",
     videoUrl: ""

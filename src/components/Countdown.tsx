@@ -2,11 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useLanguage } from "@/context/LanguageContext";
 import { useContent } from "@/context/ContentContext";
 
 export default function Countdown() {
-  const { t, lang } = useLanguage();
   const { content } = useContent();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -19,8 +17,8 @@ export default function Countdown() {
   useEffect(() => {
     setIsMounted(true);
     
-    // Get target date from content based on current language
-    const targetStr = content?.hero?.[lang]?.countdownTarget;
+    // Get target date from content
+    const targetStr = content?.hero?.en?.countdownTarget;
     if (!targetStr) return; // Do not run countdown if no date is set
 
     const targetDate = new Date(targetStr).getTime();
@@ -42,9 +40,9 @@ export default function Countdown() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [content, lang]);
+  }, [content]);
 
-  if (!isMounted || !content?.hero?.[lang]?.countdownTarget) return null; // Prevent hydration mismatch or empty countdown
+  if (!isMounted || !content?.hero?.en?.countdownTarget) return null; // Prevent hydration mismatch or empty countdown
 
   return (
     <section className="w-full py-16 md:py-24 bg-brand-dark text-foreground relative z-20 border-y border-primary/20 overflow-hidden">
@@ -67,7 +65,7 @@ export default function Countdown() {
                 {value.toString().padStart(2, "0")}
               </span>
               <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] mt-4 font-semibold text-gray-400 group-hover:text-primary transition-colors duration-500">
-                {t(`countdown.${unit}`)}
+                {unit}
               </span>
             </div>
           ))}

@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 
 import { Playfair_Display, Inter, Great_Vibes, Noto_Serif_Sinhala, Noto_Serif_Tamil } from "next/font/google";
 import { ContentProvider } from "@/context/ContentContext";
-import { LanguageProvider } from "@/context/LanguageContext";
 
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -27,11 +26,9 @@ export default function RootLayout({
       <body className={`antialiased bg-dark-bg text-light-bg ${playfair.variable} ${inter.variable} ${greatVibes.variable} ${notoSinhala.variable} ${notoTamil.variable}`} style={{
         "--font-playfair": "var(--font-script)"
       } as React.CSSProperties}>
-        <LanguageProvider>
           <ContentProvider>
             {children}
           </ContentProvider>
-        </LanguageProvider>
       </body>
     </html>
   );

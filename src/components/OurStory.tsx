@@ -3,12 +3,10 @@
 
 import { motion } from "framer-motion";
 import { useContent } from "@/context/ContentContext";
-import { useLanguage } from "@/context/LanguageContext";
 
 export default function OurStory() {
   const { content } = useContent();
-  const { lang, t } = useLanguage();
-  const timelineEventsData = content?.ourStory?.[lang]?.events || content?.ourStory?.events || [];
+  const timelineEventsData = content?.ourStory?.en?.events || content?.ourStory?.events || [];
   const timelineEvents = Array.isArray(timelineEventsData) ? timelineEventsData : [];
   const eventsToDisplay = timelineEvents;
 

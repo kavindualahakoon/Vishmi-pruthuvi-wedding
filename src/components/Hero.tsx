@@ -7,17 +7,14 @@ import { Sparkles } from "@react-three/drei";
 import { useEffect, useState, useRef } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import { useContent } from "@/context/ContentContext";
-import { useLanguage } from "@/context/LanguageContext";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Hero() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const { content } = useContent();
-  const { lang, t } = useLanguage();
   
-  // Use localized content if available, fallback to default English structure
-  const heroContent = content?.hero?.[lang] || content?.hero?.en || content?.hero || { 
+  // Use English content
+  const heroContent = content?.hero?.en || content?.hero || { 
     brideName: "", 
     groomName: "", 
     weddingDate: "", 
@@ -78,7 +75,6 @@ export default function Hero() {
 
       {/* Top Right Controls */}
       <div className="absolute top-6 right-6 z-50 flex items-center gap-4">
-        <LanguageSwitcher />
         <button 
           onClick={toggleAudio}
           className="p-3 rounded-full glass-panel text-primary hover:text-white transition-colors"

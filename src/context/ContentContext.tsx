@@ -44,6 +44,18 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (content?.faviconUrl) {
+      let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
+      if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.head.appendChild(link);
+      }
+      link.href = content.faviconUrl;
+    }
+  }, [content?.faviconUrl]);
+
   return (
     <ContentContext.Provider value={{ content, loading, refreshContent: fetchContent, setContent }}>
       {children}

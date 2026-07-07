@@ -4,12 +4,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useContent } from "@/context/ContentContext";
-import { useLanguage } from "@/context/LanguageContext";
 import { Image as ImageIcon } from "lucide-react";
 
 export default function WeddingCard() {
   const { content } = useContent();
-  const { lang, t } = useLanguage();
   const weddingCardContent = content?.weddingCard || {
     imageUrl: ""
   };
